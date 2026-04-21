@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For You 🌙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,700&family=Inter:wght@200;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+    <canvas id="sky"></canvas>
+
+    <!-- PHASE 0 -->
+    <div id="phase-dark" class="phase">
+        <div class="tw-wrap" id="tw-wrap"><span id="tw-text"></span><span class="tw-cursor"></span></div>
+        <div class="dark-hint">touch the light</div>
+        <div id="sparkle" class="sparkle-wrap">
+            <div class="sparkle-core"></div>
+            <div class="sparkle-ring r1"></div><div class="sparkle-ring r2"></div><div class="sparkle-ring r3"></div>
+            <div class="sparkle-ray" style="--a:0deg"></div><div class="sparkle-ray" style="--a:45deg"></div>
+            <div class="sparkle-ray" style="--a:90deg"></div><div class="sparkle-ray" style="--a:135deg"></div>
+            <div class="sparkle-ray" style="--a:180deg"></div><div class="sparkle-ray" style="--a:225deg"></div>
+            <div class="sparkle-ray" style="--a:270deg"></div><div class="sparkle-ray" style="--a:315deg"></div>
+        </div>
+    </div>
+
+    <!-- PHASE 1: ENVELOPE -->
+    <div id="phase-envelope" class="phase hidden">
+        <div id="envelope" class="env-scene">
+            <div class="env-body">
+                <div class="env-stars"></div>
+                <div class="env-corner tl"></div><div class="env-corner tr"></div>
+                <div class="env-corner bl"></div><div class="env-corner br"></div>
+                <div class="env-stamp"><div class="env-stamp-inner">🌙</div><div class="env-stamp-label">LOVE</div></div>
+                <div class="env-inner-shadow"></div>
+                <div class="env-bottom-fold"></div>
+                <div class="env-left-fold"></div>
+                <div class="env-right-fold"></div>
+                <div class="env-pages-container" id="pages-container"></div>
+            </div>
+            <div class="env-flap-wrap" id="env-flap-wrap">
+                <div class="env-flap"><div class="env-flap-lining"></div></div>
+            </div>
+            <div class="env-seal-wrap" id="env-seal">
+                <div class="env-seal-outer-ring"></div>
+                <div class="env-seal-ring"></div>
+                <div class="env-seal-center">🌙</div>
+            </div>
+            <p class="env-tap-hint" id="env-hint">Tap to open</p>
+        </div>
+    </div>
+
+    <!-- PHASE 2: PAGES -->
+    <div id="phase-pages" class="phase hidden">
+        <div class="pages-stage" id="pages-stage">
+
+            <!-- Page 0: Cover -->
+            <div class="page" id="page-0">
+                <div class="page-inner">
+                    <div class="page-ribbon"></div>
+                    <div class="page-ornament-top">
+                        <span class="orn-line-l"></span><span class="orn-icon">✦ ❤ ✦</span><span class="orn-line-r"></span>
+                    </div>
+                    <div class="page-lines"></div>
+                    <div class="page-content page-content-cover">
+                        <p class="page-line pl-small" style="--i:0">A letter for...</p>
+                        <h1 class="page-line page-name" style="--i:1">my moon,</h1>
+                        <div class="page-name-under page-line" style="--i:2"><span class="pnu-line"></span></div>
+                        <p class="page-line page-subtitle" style="--i:3">my favorite human,<br>my entire world.</p>
+                        <div class="page-hearts-row page-line" style="--i:4">
+                            <span>❤</span><span>🌙</span><span>💕</span><span>🌙</span><span>❤</span>
+                        </div>
+                    </div>
+                    <div class="page-ornament-bottom">
+                        <span class="orn-line-l"></span><span class="orn-icon">✦</span><span class="orn-line-r"></span>
+                    </div>
+                </div>
+                <p class="page-nav-hint">Tap to read ›</p>
+            </div>
+
+            <!-- Page 1 -->
+            <div class="page hidden" id="page-1">
+                <div class="page-inner">
+                    <div class="page-ribbon"></div>
+                    <div class="page-ornament-top">
+                        <span class="orn-line-l"></span><span class="orn-icon">— I —</span><span class="orn-line-r"></span>
+                    </div>
+                    <div class="page-lines"></div>
+                    <div class="page-content">
+                        <h2 class="page-line" style="--i:0">What I'd give for a second</h2>
+                        <div class="page-h2-under page-line" style="--i:1"><span></span></div>
+                        <div class="typed-wrap"><span id="typed-p1"></span></div>
+                    </div>
+                    <div class="page-ornament-bottom">
+                        <span class="orn-line-l"></span><span class="orn-icon">❤</span><span class="orn-line-r"></span>
+                    </div>
+                </div>
+                <p class="page-nav-hint typed-hint-1">Tap to skip typing ›</p>
+            </div>
+
+            <!-- Page 2 -->
+            <div class="page hidden" id="page-2">
+                <div class="page-inner">
+                    <div class="page-ribbon"></div>
+                    <div class="page-ornament-top">
+                        <span class="orn-line-l"></span><span class="orn-icon">— II —</span><span class="orn-line-r"></span>
+                    </div>
+                    <div class="page-lines"></div>
+                    <div class="page-content">
+                        <h2 class="page-line" style="--i:0">I'm not going anywhere</h2>
+                        <div class="page-h2-under page-line" style="--i:1"><span></span></div>
+                        <div class="typed-wrap"><span id="typed-p2"></span></div>
+                    </div>
+                    <div class="page-ornament-bottom">
+                        <span class="orn-line-l"></span><span class="orn-icon">🌙</span><span class="orn-line-r"></span>
+                    </div>
+                </div>
+                <p class="page-nav-hint typed-hint-2">Tap to skip typing ›</p>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="page hidden" id="page-3">
+                <div class="page-inner">
+                    <div class="page-ribbon"></div>
+                    <div class="page-ornament-top">
+                        <span class="orn-line-l"></span><span class="orn-icon">— III —</span><span class="orn-line-r"></span>
+                    </div>
+                    <div class="page-lines"></div>
+                    <div class="page-content">
+                        <h2 class="page-line" style="--i:0">My reason for being</h2>
+                        <div class="page-h2-under page-line" style="--i:1"><span></span></div>
+                        <div class="typed-wrap"><span id="typed-p3"></span></div>
+                    </div>
+                    <div class="page-ornament-bottom">
+                        <span class="orn-line-l"></span><span class="orn-icon">💕</span><span class="orn-line-r"></span>
+                    </div>
+                </div>
+                <p class="page-nav-hint typed-hint-3">Tap to skip typing ›</p>
+            </div>
+
+            <!-- Page 4 -->
+            <div class="page hidden" id="page-4">
+                <div class="page-inner">
+                    <div class="page-ribbon"></div>
+                    <div class="page-ornament-top">
+                        <span class="orn-line-l"></span><span class="orn-icon">— IV —</span><span class="orn-line-r"></span>
+                    </div>
+                    <div class="page-lines"></div>
+                    <div class="page-content">
+                        <h2 class="page-line" style="--i:0">Until the end of the road</h2>
+                        <div class="page-h2-under page-line" style="--i:1"><span></span></div>
+                        <div class="typed-wrap"><span id="typed-p4"></span></div>
+                    </div>
+                    <div class="page-ornament-bottom">
+                        <span class="orn-line-l"></span><span class="orn-icon">❤ 🌙 ❤</span><span class="orn-line-r"></span>
+                    </div>
+                </div>
+                <p class="page-nav-hint typed-hint-4">Tap to skip typing ›</p>
+            </div>
+
+            <!-- Page 5: Te Amo -->
+            <div class="page hidden" id="page-5">
+                <div class="page-inner page-inner-final">
+                    <div class="page-ribbon"></div>
+                    <div class="page-lines"></div>
+                    <div class="page-content page-content-final">
+                        <p class="page-line te-amo-pre" style="--i:0">Y con todo lo que soy...</p>
+                        <h1 class="page-line te-amo" style="--i:1">Te Amo,<br>Moonsie</h1>
+                        <div class="page-line sig-row" style="--i:3">— Maau ❤</div>
+                        <p class="page-line page-continue" style="--i:4">Tap to see my drawings ›</p>
+                    </div>
+                    <div class="page-ornament-bottom">
+                        <span class="orn-line-l"></span><span class="orn-icon">❤ 🌙 ❤</span><span class="orn-line-r"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 6: Gallery -->
+            <div class="page hidden" id="page-6">
+                <div class="card-gallery-wrap">
+                    <p class="gallery-page-title">✦ My drawings for you ✦</p>
+                    <div class="big-gallery" id="gallery">
+                        <div class="big-gi" data-src="/images/1.png" data-cap="Love you ♡" style="--gr:-4deg">
+                            <div class="bg-photo"><img src="/images/1.png" alt="Love you"></div>
+                            <div class="bg-cap">Love you ♡</div>
+                        </div>
+                        <div class="big-gi" data-src="/images/2.png" data-cap="you're my .next ♡" style="--gr:2.5deg">
+                            <div class="bg-photo"><img src="/images/2.png" alt="Next"></div>
+                            <div class="bg-cap">you're my .next ♡</div>
+                        </div>
+                        <div class="big-gi" data-src="/images/3.png" data-cap="you are caring ♡" style="--gr:-2deg">
+                            <div class="bg-photo"><img src="/images/3.png" alt="Caring"></div>
+                            <div class="bg-cap">you are caring ♡</div>
+                        </div>
+                    </div>
+                    <p class="gallery-hint">Tap any photo to see it ❤</p>
+                    <button class="omt-btn" id="omt-btn">one more thing...</button>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="page-arrow prev" id="btn-prev">‹</button>
+        <button class="page-arrow next" id="btn-next">›</button>
+        <div class="page-dots" id="page-dots"></div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lb-hidden">
+        <div class="lb-bg"></div>
+        <div class="lb-box">
+            <img id="lb-img" src="" alt="">
+            <p id="lb-cap"></p>
+            <button id="lb-close">✕</button>
+        </div>
+    </div>
+
+    <!-- VOICE MESSAGE OVERLAY -->
+    <div id="phase-voice" class="voice-hidden">
+        <div class="voice-overlay">
+            <div class="voice-phrase-wrap" id="voice-phrase-wrap">
+                <p class="voice-phrase" id="voice-phrase"></p>
+            </div>
+            <div class="voice-heart" id="voice-heart">❤</div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
