@@ -216,7 +216,7 @@ function openEnvelope() {
 }
 
 // ═══ AUDIO ═════════════════════════════
-const bgAudio = new Audio('/audio.mp3');
+const bgAudio = new Audio(`${import.meta.env.BASE_URL}audio.mp3`);
 bgAudio.loop = true;
 bgAudio.volume = 0;
 let audioStarted = false;
@@ -433,7 +433,7 @@ function closeLB() {
     lb.classList.add('lb-hidden');
     lbImg.src = '';
     // Reveal "one more thing" only after 3rd image closes
-    if (wasSrc.includes('/images/3.png') && omtBtn) {
+    if (wasSrc.includes('images/3.png') && omtBtn) {
       setTimeout(() => omtBtn.classList.add('show'), 50);
     }
   }, 380);
@@ -525,7 +525,7 @@ waveDiv.className = 'voice-wave';
 waveDiv.innerHTML = '<span></span>'.repeat(7);
 voiceEl.querySelector('.voice-overlay').insertBefore(waveDiv, voiceHeart);
 
-const voiceAudio = new Audio('/cuak.mp3');
+const voiceAudio = new Audio(`${import.meta.env.BASE_URL}cuak.mp3`);
 let voiceTimers = [];
 
 function clearVoiceTimers() { voiceTimers.forEach(clearTimeout); voiceTimers = []; }
