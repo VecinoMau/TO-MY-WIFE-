@@ -1,3 +1,4 @@
+console.log("🌙 Moonsie Portal Starting...");
 import Typed from 'typed.js';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -216,7 +217,7 @@ function openEnvelope() {
 }
 
 // ═══ AUDIO ═════════════════════════════
-const bgAudio = new Audio(`${import.meta.env.BASE_URL}audio.mp3`);
+const bgAudio = new Audio('audio.mp3');
 bgAudio.loop = true;
 bgAudio.volume = 0;
 let audioStarted = false;
@@ -525,7 +526,7 @@ waveDiv.className = 'voice-wave';
 waveDiv.innerHTML = '<span></span>'.repeat(7);
 voiceEl.querySelector('.voice-overlay').insertBefore(waveDiv, voiceHeart);
 
-const voiceAudio = new Audio(`${import.meta.env.BASE_URL}cuak.mp3`);
+const voiceAudio = new Audio('cuak.mp3');
 let voiceTimers = [];
 
 function clearVoiceTimers() { voiceTimers.forEach(clearTimeout); voiceTimers = []; }
